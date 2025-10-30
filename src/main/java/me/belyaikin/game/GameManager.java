@@ -1,29 +1,49 @@
 package me.belyaikin.game;
 
 import me.belyaikin.game.entity.enemy.Enemy;
-import me.belyaikin.game.entity.enemy.EnemyFactory;
 import me.belyaikin.game.entity.player.Player;
 import me.belyaikin.game.entity.player.PlayerFactory;
-import me.belyaikin.game.ui.GameWindow;
-import me.belyaikin.game.ui.UIComposer;
+import me.belyaikin.game.ui.WindowManager;
 
-public record GameManager(GameWindow gameWindow, UIComposer uiComposer) {
-    public static Player player;
-    public static Enemy enemy;
+public class GameManager {
+    private static GameManager INSTANCE;
 
-    public void initialize() {
-        this.gameWindow.getjFrame().setTitle("Welcome to the battle!");
+    private Player player;
 
-        this.uiComposer.initialize();
+    private Enemy enemy;
+    private final WindowManager windowManager;
 
-        player = (Player) new PlayerFactory("test").create();
-        enemy = (Enemy) new EnemyFactory().create();
-
-        System.out.println(player);
-        System.out.println(enemy);
+    private GameManager() {
+        this.windowManager = new WindowManager();
     }
 
-    public void setTitle(String title) {
-        this.gameWindow.getjFrame().setTitle(title);
+    public static GameManager getInstance() {
+        if (INSTANCE == null)
+            INSTANCE = new GameManager();
+        return INSTANCE;
+    }
+
+    public void start() {
+        windowManager.showIntroGameWindow();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void createPlayer(String name) {
+        this.player = (Player) new PlayerFactory(name).create();
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public WindowManager getWindowManager() {
+        return windowManager;
     }
 }
