@@ -9,8 +9,8 @@ public class GameManager {
     private static GameManager INSTANCE;
 
     private Player player;
-
     private Enemy enemy;
+
     private final WindowManager windowManager;
 
     private GameManager() {

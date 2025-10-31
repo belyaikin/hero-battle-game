@@ -71,6 +71,7 @@ public record GameWindow(JFrame jFrame) {
             jFrame.getContentPane().setLayout(this.layout);
 
             jFrame.getContentPane().setBackground(backgroundColor);
+
             components.forEach(jFrame::add);
 
             if (this.pack) jFrame.pack();

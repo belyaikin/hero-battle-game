@@ -6,7 +6,6 @@ import me.belyaikin.game.ui.button.WindowChangerGameButton;
 import me.belyaikin.game.ui.factory.GameWindowFactory;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 public class ConfirmButton extends WindowChangerGameButton {
     private final JTextField playerNameField;
@@ -17,12 +16,11 @@ public class ConfirmButton extends WindowChangerGameButton {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        super.actionPerformed(e);
+    protected void onClick() {
+        String name = playerNameField.getText().trim();
+        if (name.isBlank()) return;
 
-        if (e.getSource() == this) {
-            GameManager.getInstance().createPlayer(playerNameField.getText());
-            System.out.println("Created player with name " + GameManager.getInstance().getPlayer().getName());
-        }
+        GameManager.getInstance().createPlayer(playerNameField.getText());
+        super.onClick();
     }
 }
