@@ -5,7 +5,7 @@ import me.belyaikin.game.entity.player.Player;
 import me.belyaikin.game.entity.player.PlayerFactory;
 import me.belyaikin.game.ui.WindowManager;
 
-public class GameManager {
+public final class GameManager {
     private static GameManager INSTANCE;
 
     private Player player;
