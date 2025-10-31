@@ -71,10 +71,12 @@ public record GameWindow(JFrame jFrame) {
             jFrame.getContentPane().setLayout(this.layout);
 
             jFrame.getContentPane().setBackground(backgroundColor);
+            jFrame.getContentPane().setForeground(foregroundColor);
 
             components.forEach(jFrame::add);
 
             if (this.pack) jFrame.pack();
+
             jFrame.setResizable(resizable);
 
             jFrame.setVisible(true);
