@@ -31,7 +31,7 @@ public final class GameManager {
     }
 
     public void createPlayer(String name) {
-        this.playerEntity = (PlayerEntity) new PlayerFactory(name).create();
+        this.playerEntity = (PlayerEntity) new PlayerEntity(name);
     }
 
     public Enemy getEnemy() {
