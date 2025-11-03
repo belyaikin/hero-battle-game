@@ -8,13 +8,13 @@ import me.belyaikin.game.weapon.Weapon;
 public final class PlayerEntity extends LivingEntity {
     private String name;
 
+    private Weapon currentWeapon;
+
     public PlayerEntity(String name) {
-        super(100, new Sprite("test"));
+        super(100, new Sprite("test.png"));
 
         this.name = name;
     }
-
-    private Weapon currentWeapon;
 
     @Override
     public AttackResult onAttacked(Weapon weapon) {
@@ -32,5 +32,10 @@ public final class PlayerEntity extends LivingEntity {
 
     public void setCurrentWeapon(Weapon currentWeapon) {
         this.currentWeapon = currentWeapon;
+    }
+
+    @Override
+    public void tick() {
+        System.out.println("Hello");
     }
 }
