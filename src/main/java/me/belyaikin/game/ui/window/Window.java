@@ -5,16 +5,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameWindow {
-    protected final JFrame jFrame;
-
-    public GameWindow(JFrame jFrame) {
-        this.jFrame = jFrame;
-    }
-
-    public JFrame getjFrame() {
-        return jFrame;
-    }
+public class Window extends JFrame {
+    protected Window() {}
 
     public static final class Builder {
         private int width;
@@ -70,28 +62,28 @@ public class GameWindow {
             return this;
         }
 
-        public GameWindow build() {
-            JFrame jFrame = new JFrame();
+        public Window build() {
+            Window window = new Window();
 
-            jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
             if (this.width != 0 && this.height != 0)
-                jFrame.setSize(width, height);
+                window.setSize(width, height);
 
-            jFrame.getContentPane().setLayout(this.layout);
+            window.getContentPane().setLayout(this.layout);
 
-            jFrame.getContentPane().setBackground(backgroundColor);
-            jFrame.getContentPane().setForeground(foregroundColor);
+            window.getContentPane().setBackground(backgroundColor);
+            window.getContentPane().setForeground(foregroundColor);
 
-            components.forEach(jFrame::add);
+            components.forEach(window::add);
 
-            if (this.pack) jFrame.pack();
+            if (this.pack) window.pack();
 
-            jFrame.setResizable(resizable);
+            window.setResizable(resizable);
 
-            jFrame.setVisible(true);
+            window.setVisible(true);
 
-            return new GameWindow(jFrame);
+            return window;
         }
     }
 }

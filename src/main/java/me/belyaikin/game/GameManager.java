@@ -1,6 +1,6 @@
 package me.belyaikin.game;
 
-import me.belyaikin.game.entity.enemy.Enemy;
+import me.belyaikin.game.entity.enemy.EnemyEntity;
 import me.belyaikin.game.entity.player.PlayerEntity;
 import me.belyaikin.game.ui.WindowManager;
 
@@ -8,7 +8,7 @@ public final class GameManager {
     private static GameManager INSTANCE;
 
     private PlayerEntity playerEntity;
-    private Enemy enemy;
+    private EnemyEntity enemyEntity;
 
     private final WindowManager windowManager;
 
@@ -31,15 +31,15 @@ public final class GameManager {
     }
 
     public void createPlayer(String name) {
-        this.playerEntity = (PlayerEntity) new PlayerEntity(name);
+        this.playerEntity = new PlayerEntity(name);
     }
 
-    public Enemy getEnemy() {
-        return enemy;
+    public EnemyEntity getEnemy() {
+        return enemyEntity;
     }
 
-    public void setEnemy(Enemy enemy) {
-        this.enemy = enemy;
+    public void setEnemy(EnemyEntity enemy) {
+        this.enemyEntity = enemy;
     }
 
     public WindowManager getWindowManager() {

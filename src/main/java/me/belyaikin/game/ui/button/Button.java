@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class GameButton extends JButton implements ActionListener {
-    public GameButton(String text) {
+public abstract class Button extends JButton implements ActionListener {
+    public Button(String text) {
         this.setText(text);
         this.addActionListener(this);
     }

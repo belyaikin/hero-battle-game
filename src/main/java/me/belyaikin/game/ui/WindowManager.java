@@ -1,18 +1,18 @@
 package me.belyaikin.game.ui;
 
-import me.belyaikin.game.ui.factory.impl.IntroWindowFactory;
-import me.belyaikin.game.ui.window.GameWindow;
+import me.belyaikin.game.ui.window.factory.impl.IntroWindowFactory;
+import me.belyaikin.game.ui.window.Window;
 
 public final class WindowManager {
-    private GameWindow currentWindow;
+    private Window currentWindow;
 
     public void showIntroGameWindow() {
         setWindow(new IntroWindowFactory().create());
     }
 
-    public void setWindow(GameWindow newWindow) {
+    public void setWindow(Window newWindow) {
         if (currentWindow != null)
-            this.currentWindow.getjFrame().dispose();
+            this.currentWindow.dispose();
 
         this.currentWindow = newWindow;
     }

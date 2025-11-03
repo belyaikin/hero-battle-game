@@ -2,17 +2,16 @@ package me.belyaikin.game.ui.window;
 
 import javax.swing.*;
 
-public class TickableGameWindow extends GameWindow {
+public class TickableWindow extends Window {
     private final Timer timer;
 
-    public TickableGameWindow(JFrame jFrame) {
-        super(jFrame);
-
+    protected TickableWindow() {
         timer = new Timer(1000 / 60, e -> tick());
     }
 
     public void tick() {
-        this.jFrame.repaint();
+        this.repaint();
+        System.out.println("test");
     }
 
     public void stop() {

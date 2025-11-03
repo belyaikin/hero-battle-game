@@ -1,26 +1,25 @@
-package me.belyaikin.game.ui.factory.impl;
+package me.belyaikin.game.ui.window.factory.impl;
 
 import me.belyaikin.game.GameManager;
-import me.belyaikin.game.ui.button.WindowChangerGameButton;
-import me.belyaikin.game.ui.button.impl.ConfirmNameButton;
+import me.belyaikin.game.ui.button.WindowChangerButton;
 import me.belyaikin.game.ui.button.impl.ProceedButton;
-import me.belyaikin.game.ui.window.GameWindow;
-import me.belyaikin.game.ui.factory.GameWindowFactory;
+import me.belyaikin.game.ui.window.Window;
+import me.belyaikin.game.ui.window.factory.WindowFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
-public final class ConfirmWindowFactory implements GameWindowFactory {
+public final class ConfirmWindowFactory implements WindowFactory {
     @Override
-    public GameWindow create() {
+    public Window create() {
         JLabel areYouReadyText = new JLabel("YOU ARE GOING TO PLAY THE GAME THAT IS JUST WILL WASTE YOUR TIME. ARE YOU READY?");
         areYouReadyText.setForeground(Color.WHITE);
 
-        WindowChangerGameButton confirmButton = new ProceedButton("YES.", GameManager.getInstance().getWindowManager(), new BattleWindowFactory());
+        WindowChangerButton confirmButton = new ProceedButton("YES.", GameManager.getInstance().getWindowManager(), new BattleWindowFactory());
         confirmButton.setBackground(Color.BLACK);
         confirmButton.setForeground(Color.WHITE);
 
-        return new GameWindow.Builder()
+        return new Window.Builder()
                 .layout(new FlowLayout())
 
                 .background(Color.BLACK)

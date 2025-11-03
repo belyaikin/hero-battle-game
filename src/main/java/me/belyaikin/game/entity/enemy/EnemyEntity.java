@@ -1,10 +1,11 @@
 package me.belyaikin.game.entity.enemy;
 
 import me.belyaikin.game.entity.LivingEntity;
+import me.belyaikin.game.ui.sprite.Sprite;
 
-public abstract class Enemy extends LivingEntity {
-    public Enemy(String name, String description) {
-        super(name, description);
+public abstract class EnemyEntity extends LivingEntity {
+    public EnemyEntity() {
+        super(100, new Sprite("test"));
     }
 
     @Override

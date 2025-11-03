@@ -1,17 +1,17 @@
-package me.belyaikin.game.ui.factory.impl;
+package me.belyaikin.game.ui.window.factory.impl;
 
 import me.belyaikin.game.GameManager;
-import me.belyaikin.game.ui.button.WindowChangerGameButton;
-import me.belyaikin.game.ui.window.GameWindow;
+import me.belyaikin.game.ui.button.WindowChangerButton;
+import me.belyaikin.game.ui.window.Window;
 import me.belyaikin.game.ui.button.impl.ConfirmNameButton;
-import me.belyaikin.game.ui.factory.GameWindowFactory;
+import me.belyaikin.game.ui.window.factory.WindowFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
-public final class IntroWindowFactory implements GameWindowFactory {
+public final class IntroWindowFactory implements WindowFactory {
     @Override
-    public GameWindow create() {
+    public Window create() {
         JLabel enterYourNameText = new JLabel("ENTER YOUR NAME.");
         enterYourNameText.setForeground(Color.WHITE);
 
@@ -20,11 +20,11 @@ public final class IntroWindowFactory implements GameWindowFactory {
         nameField.setBackground(Color.BLACK);
         nameField.setForeground(Color.WHITE);
 
-        WindowChangerGameButton submitButton = new ConfirmNameButton(GameManager.getInstance().getWindowManager(), new ConfirmWindowFactory(), nameField);
+        WindowChangerButton submitButton = new ConfirmNameButton(GameManager.getInstance().getWindowManager(), new ConfirmWindowFactory(), nameField);
         submitButton.setBackground(Color.BLACK);
         submitButton.setForeground(Color.WHITE);
 
-        return new GameWindow.Builder()
+        return new Window.Builder()
                 .layout(new FlowLayout())
 
                 .background(Color.BLACK)
