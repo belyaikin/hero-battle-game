@@ -8,56 +8,56 @@ import java.util.List;
 public class Window extends JFrame {
     protected Window() {}
 
-    public static final class Builder {
-        private int width;
-        private int height;
+    public static class WindowBuilder {
+        protected int width;
+        protected int height;
 
-        private LayoutManager layout;
+        protected LayoutManager layout;
 
-        private Color backgroundColor = Color.WHITE;
-        private Color foregroundColor = Color.BLACK;
+        protected Color backgroundColor = Color.WHITE;
+        protected Color foregroundColor = Color.BLACK;
 
-        private final List<Component> components = new ArrayList<>();
+        protected final List<Component> components = new ArrayList<>();
 
-        private boolean pack = false;
-        private boolean resizable = true;
+        protected boolean pack = false;
+        protected boolean resizable = true;
 
-        public Builder width(int width) {
+        public WindowBuilder width(int width) {
             this.width = width;
             return this;
         }
 
-        public Builder height(int height) {
+        public WindowBuilder height(int height) {
             this.height = height;
             return this;
         }
 
-        public Builder background(Color color) {
+        public WindowBuilder background(Color color) {
             this.backgroundColor = color;
             return this;
         }
 
-        public Builder foreground(Color color) {
+        public WindowBuilder foreground(Color color) {
             this.foregroundColor = color;
             return this;
         }
 
-        public Builder layout(LayoutManager layout) {
+        public WindowBuilder layout(LayoutManager layout) {
             this.layout = layout;
             return this;
         }
 
-        public Builder component(Component component) {
+        public WindowBuilder component(Component component) {
             this.components.add(component);
             return this;
         }
 
-        public Builder pack() {
+        public WindowBuilder pack() {
             this.pack = true;
             return this;
         }
 
-        public Builder notResizable() {
+        public WindowBuilder notResizable() {
             this.resizable = false;
             return this;
         }

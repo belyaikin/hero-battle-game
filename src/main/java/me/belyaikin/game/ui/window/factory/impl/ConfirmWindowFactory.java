@@ -19,7 +19,7 @@ public final class ConfirmWindowFactory implements WindowFactory {
         confirmButton.setBackground(Color.BLACK);
         confirmButton.setForeground(Color.WHITE);
 
-        return new Window.Builder()
+        return new Window.WindowBuilder()
                 .layout(new FlowLayout())
 
                 .background(Color.BLACK)

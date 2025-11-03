@@ -24,7 +24,7 @@ public final class IntroWindowFactory implements WindowFactory {
         submitButton.setBackground(Color.BLACK);
         submitButton.setForeground(Color.WHITE);
 
-        return new Window.Builder()
+        return new Window.WindowBuilder()
                 .layout(new FlowLayout())
 
                 .background(Color.BLACK)
