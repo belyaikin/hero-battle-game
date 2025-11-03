@@ -12,7 +12,7 @@ public final class WindowManager {
 
     public void setWindow(GameWindow newWindow) {
         if (currentWindow != null)
-            this.currentWindow.jFrame().dispose();
+            this.currentWindow.getjFrame().dispose();
 
         this.currentWindow = newWindow;
     }

@@ -5,7 +5,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public record GameWindow(JFrame jFrame) {
+public class GameWindow {
+    protected final JFrame jFrame;
+
+    public GameWindow(JFrame jFrame) {
+        this.jFrame = jFrame;
+    }
+
+    public JFrame getjFrame() {
+        return jFrame;
+    }
+
     public static final class Builder {
         private int width;
         private int height;

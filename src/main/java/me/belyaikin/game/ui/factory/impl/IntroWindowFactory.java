@@ -3,7 +3,7 @@ package me.belyaikin.game.ui.factory.impl;
 import me.belyaikin.game.GameManager;
 import me.belyaikin.game.ui.button.WindowChangerGameButton;
 import me.belyaikin.game.ui.window.GameWindow;
-import me.belyaikin.game.ui.button.impl.ConfirmButton;
+import me.belyaikin.game.ui.button.impl.ConfirmNameButton;
 import me.belyaikin.game.ui.factory.GameWindowFactory;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public final class IntroWindowFactory implements GameWindowFactory {
         nameField.setBackground(Color.BLACK);
         nameField.setForeground(Color.WHITE);
 
-        WindowChangerGameButton submitButton = new ConfirmButton(GameManager.getInstance().getWindowManager(), new ConfirmWindowFactory(), nameField);
+        WindowChangerGameButton submitButton = new ConfirmNameButton(GameManager.getInstance().getWindowManager(), new ConfirmWindowFactory(), nameField);
         submitButton.setBackground(Color.BLACK);
         submitButton.setForeground(Color.WHITE);
 

@@ -1,27 +1,19 @@
 package me.belyaikin.game.entity;
 
+import me.belyaikin.game.ui.sprite.Sprite;
+
 public abstract class Entity {
-    public String name;
-    public String description;
+    protected Sprite sprite;
 
-    public Entity(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public Entity(Sprite sprite) {
+        this.sprite = sprite;
     }
 
-    public String getName() {
-        return name;
+    public Sprite getSprite() {
+        return sprite;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 }

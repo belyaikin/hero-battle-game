@@ -7,10 +7,10 @@ import me.belyaikin.game.ui.factory.GameWindowFactory;
 
 import javax.swing.*;
 
-public final class ConfirmButton extends WindowChangerGameButton {
+public final class ConfirmNameButton extends WindowChangerGameButton {
     private final JTextField playerNameField;
 
-    public ConfirmButton(WindowManager windowManager, GameWindowFactory newWindow, JTextField playerNameField) {
+    public ConfirmNameButton(WindowManager windowManager, GameWindowFactory newWindow, JTextField playerNameField) {
         super("CONFIRM..?", windowManager, newWindow);
         this.playerNameField = playerNameField;
     }
