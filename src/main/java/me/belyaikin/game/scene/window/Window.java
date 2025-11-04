@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Window extends JFrame {
-    private final WindowPanel windowPanel = new WindowPanel();
+    private final WindowPanel windowPanel = new WindowPanel(this);
 
     private Window() {}
 
@@ -76,6 +76,7 @@ public final class Window extends JFrame {
             if (this.width != 0 && this.height != 0)
                 window.setSize(width, height);
 
+            window.setContentPane(window.getWindowPanel());
             window.getContentPane().setLayout(this.layout);
 
             window.getContentPane().setBackground(backgroundColor);
@@ -86,8 +87,6 @@ public final class Window extends JFrame {
             if (this.pack) window.pack();
 
             window.setResizable(resizable);
-
-            window.setVisible(true);
 
             return window;
         }

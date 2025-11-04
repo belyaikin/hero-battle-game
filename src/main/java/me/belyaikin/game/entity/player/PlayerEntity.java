@@ -6,7 +6,7 @@ import me.belyaikin.game.weapon.AttackResult;
 import me.belyaikin.game.weapon.Weapon;
 
 public final class PlayerEntity extends LivingEntity {
-    private String name;
+    private final String name;
 
     private Weapon currentWeapon;
 
@@ -26,6 +26,10 @@ public final class PlayerEntity extends LivingEntity {
         // TODO: Show game over screen
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Weapon getCurrentWeapon() {
         return currentWeapon;
     }
@@ -36,6 +40,6 @@ public final class PlayerEntity extends LivingEntity {
 
     @Override
     public void tick() {
-        System.out.println("Hello");
+        System.out.println("Im player");
     }
 }

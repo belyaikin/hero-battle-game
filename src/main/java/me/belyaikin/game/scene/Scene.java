@@ -13,13 +13,21 @@ public final class Scene {
 
     private final Timer timer;
 
-    private final List<Entity> entities = new ArrayList<>();
+    private List<Entity> entities = new ArrayList<>();
 
     public Scene(Window window) {
         this.window = window;
-
         this.timer = new Timer(1000 / 60, e -> tick());
+    }
+
+    public void activate() {
         this.timer.start();
+    }
+
+    public void deactivate() {
+        this.timer.stop();
+
+        this.entities.forEach(this::despawn);
     }
 
     public Window getWindow() {
@@ -48,7 +56,9 @@ public final class Scene {
     }
 
     public void tick() {
-        this.entities.forEach(Tickable::tick);
+        if (!entities.isEmpty())
+            this.entities.forEach(Entity::tick);
+
         this.window.repaint();
     }
 

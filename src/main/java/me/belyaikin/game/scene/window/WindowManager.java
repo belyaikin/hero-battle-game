@@ -8,5 +8,6 @@ public final class WindowManager {
             this.currentWindow.dispose();
 
         this.currentWindow = newWindow;
+        this.currentWindow.setVisible(true);
     }
 }

@@ -8,7 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class WindowPanel extends JPanel {
+    private final Window window;
     private final List<Drawable> drawables = new ArrayList<>();
+
+    public WindowPanel(Window window) {
+        this.window = window;
+    }
+
+    @Override
+    public void setPreferredSize(Dimension preferredSize) {
+        super.setPreferredSize(this.window.getPreferredSize());
+    }
 
     public void addDrawable(Drawable drawable) {
         this.drawables.add(drawable);
