@@ -11,7 +11,7 @@ public final class PlayerEntity extends LivingEntity {
     private Weapon currentWeapon;
 
     public PlayerEntity(String name) {
-        super(100, new Sprite("test.png"));
+        super(100, new Sprite("test.png", 100, 100));
 
         this.name = name;
     }

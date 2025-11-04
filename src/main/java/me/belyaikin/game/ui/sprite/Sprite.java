@@ -2,18 +2,28 @@ package me.belyaikin.game.ui.sprite;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public final class Sprite {
-    private Image image;
+    private BufferedImage image;
 
-    public Sprite(String filename) {
+    private int xScale;
+    private int yScale;
+
+    public Sprite(String filename, int xScale, int yScale) {
         setImage(filename);
+        setScaling(xScale, yScale);
     }
 
     public Image getImage() {
-        return image;
+        return image.getScaledInstance(xScale, yScale, Image.SCALE_DEFAULT);
+    }
+
+    public void setScaling(int xScale, int yScale) {
+        this.xScale = xScale;
+        this.yScale = yScale;
     }
 
     public void setImage(String filename) {

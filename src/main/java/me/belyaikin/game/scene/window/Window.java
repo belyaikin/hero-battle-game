@@ -1,63 +1,69 @@
-package me.belyaikin.game.ui.window;
+package me.belyaikin.game.scene.window;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Window extends JFrame {
-    protected Window() {}
+public final class Window extends JFrame {
+    private final WindowPanel windowPanel = new WindowPanel();
 
-    public static class WindowBuilder {
-        protected int width;
-        protected int height;
+    private Window() {}
 
-        protected LayoutManager layout;
+    public WindowPanel getWindowPanel() {
+        return this.windowPanel;
+    }
 
-        protected Color backgroundColor = Color.WHITE;
-        protected Color foregroundColor = Color.BLACK;
+    public static class Builder {
+        private int width;
+        private int height;
 
-        protected final List<Component> components = new ArrayList<>();
+        private LayoutManager layout;
 
-        protected boolean pack = false;
-        protected boolean resizable = true;
+        private Color backgroundColor = Color.WHITE;
+        private Color foregroundColor = Color.BLACK;
 
-        public WindowBuilder width(int width) {
+        private final List<Component> components = new ArrayList<>();
+
+        private boolean pack = false;
+        private boolean resizable = true;
+
+        public Builder width(int width) {
             this.width = width;
             return this;
         }
 
-        public WindowBuilder height(int height) {
+        public Builder height(int height) {
             this.height = height;
             return this;
         }
 
-        public WindowBuilder background(Color color) {
+        public Builder background(Color color) {
             this.backgroundColor = color;
             return this;
         }
 
-        public WindowBuilder foreground(Color color) {
+        public Builder foreground(Color color) {
             this.foregroundColor = color;
             return this;
         }
 
-        public WindowBuilder layout(LayoutManager layout) {
+        public Builder layout(LayoutManager layout) {
             this.layout = layout;
             return this;
         }
 
-        public WindowBuilder component(Component component) {
+        public Builder component(Component component) {
             this.components.add(component);
             return this;
         }
 
-        public WindowBuilder pack() {
+        public Builder pack() {
             this.pack = true;
             return this;
         }
 
-        public WindowBuilder notResizable() {
+        public Builder notResizable() {
             this.resizable = false;
             return this;
         }

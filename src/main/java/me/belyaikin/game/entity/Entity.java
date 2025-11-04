@@ -1,8 +1,8 @@
 package me.belyaikin.game.entity;
 
 import me.belyaikin.game.ui.sprite.Sprite;
-import me.belyaikin.game.ui.window.Scene;
 
+import javax.swing.*;
 import java.awt.*;
 
 public abstract class Entity implements Tickable, Drawable {
@@ -40,7 +40,7 @@ public abstract class Entity implements Tickable, Drawable {
     }
 
     @Override
-    public void draw(Graphics graphics, Scene scene) {
-        graphics.drawImage(sprite.getImage(), x, y, scene);
+    public void draw(Graphics graphics, JPanel jPanel) {
+        graphics.drawImage(sprite.getImage(), x, y, jPanel);
     }
 }
