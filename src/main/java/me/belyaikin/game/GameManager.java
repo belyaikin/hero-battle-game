@@ -2,7 +2,10 @@ package me.belyaikin.game;
 
 import me.belyaikin.game.entity.enemy.BossEntity;
 import me.belyaikin.game.entity.player.PlayerEntity;
-import me.belyaikin.game.ui.WindowManager;
+import me.belyaikin.game.scene.Scene;
+import me.belyaikin.game.scene.SceneManager;
+import me.belyaikin.game.scene.window.WindowManager;
+import me.belyaikin.game.scene.window.factory.impl.IntroWindowFactory;
 
 public final class GameManager {
     private static GameManager INSTANCE;
@@ -10,10 +13,12 @@ public final class GameManager {
     private PlayerEntity playerEntity;
     private BossEntity bossEntity;
 
+    private final SceneManager sceneManager;
     private final WindowManager windowManager;
 
     private GameManager() {
         this.windowManager = new WindowManager();
+        this.sceneManager = new SceneManager(windowManager);
     }
 
     public static GameManager getInstance() {
@@ -23,7 +28,7 @@ public final class GameManager {
     }
 
     public void start() {
-        windowManager.showIntroGameWindow();
+        sceneManager.setScene(new Scene(new IntroWindowFactory().create()));
     }
 
     public PlayerEntity getPlayer() {
@@ -44,5 +49,9 @@ public final class GameManager {
 
     public WindowManager getWindowManager() {
         return windowManager;
+    }
+
+    public SceneManager getSceneManager() {
+        return sceneManager;
     }
 }
