@@ -1,11 +1,13 @@
 package me.belyaikin.game.entity.player;
 
 import me.belyaikin.game.entity.LivingEntity;
-import me.belyaikin.game.entity.weapon.SimpleWeapon;
-import me.belyaikin.game.ui.sprite.Sprite;
 import me.belyaikin.game.entity.weapon.AttackResult;
+import me.belyaikin.game.entity.weapon.SimpleWeapon;
 import me.belyaikin.game.entity.weapon.Weapon;
+import me.belyaikin.game.entity.weapon.bullet.impl.SimpleBullet;
+import me.belyaikin.game.ui.sprite.Sprite;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -22,6 +24,21 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
         super(100, new Sprite("rocket.png", 16*3, 16*3));
 
         this.name = name;
+    }
+
+    @Override
+    public void onSpawn() {
+        this.getScene().getWindow().addKeyListener(this);
+        startShooting();
+    }
+
+    @Override
+    public void onTick() {
+        x = Math.clamp(x, 10, 725);
+        y = Math.clamp(y, 15, 495);
+
+        x += xInput * speed;
+        y += yInput * speed;
     }
 
     @Override
@@ -46,22 +63,16 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
         this.currentWeapon = currentWeapon;
     }
 
-    public void shoot() {
-        this.getScene().spawn(this.currentWeapon.getBullet(), this.x, this.y + 10);
+    final Timer shootingTimer = new Timer(1000 / 5, e -> {
+        this.getScene().spawn(new SimpleBullet(), this.x + 22, this.y + 10);
+    });
+
+    public void startShooting() {
+       shootingTimer.start();
     }
 
-    @Override
-    public void onSpawn() {
-        this.getScene().getWindow().addKeyListener(this);
-    }
-
-    @Override
-    public void onTick() {
-        x = Math.clamp(x, 10, 725);
-        y = Math.clamp(y, 15, 495);
-
-        x += xInput * speed;
-        y += yInput * speed;
+    public void stopShooting() {
+        shootingTimer.stop();
     }
 
     @Override
@@ -76,7 +87,6 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
             case KeyEvent.VK_DOWN -> yInput = 1;
             case KeyEvent.VK_RIGHT -> xInput = 1;
             case KeyEvent.VK_LEFT -> xInput = -1;
-            case KeyEvent.VK_SPACE -> shoot();
         }
     }
 

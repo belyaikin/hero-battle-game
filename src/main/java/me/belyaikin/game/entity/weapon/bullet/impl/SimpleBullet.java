@@ -3,9 +3,11 @@ package me.belyaikin.game.entity.weapon.bullet.impl;
 import me.belyaikin.game.entity.weapon.bullet.Bullet;
 import me.belyaikin.game.ui.sprite.Sprite;
 
+import javax.swing.*;
+
 public class SimpleBullet extends Bullet {
     public SimpleBullet() {
-        super(new Sprite("bullet.png", 3, 6), 1, 2);
+        super(new Sprite("bullet.png", 3, 6), 1, 20);
     }
 
     @Override

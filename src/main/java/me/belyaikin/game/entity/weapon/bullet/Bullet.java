@@ -3,6 +3,8 @@ package me.belyaikin.game.entity.weapon.bullet;
 import me.belyaikin.game.entity.Entity;
 import me.belyaikin.game.ui.sprite.Sprite;
 
+import javax.swing.*;
+
 public abstract class Bullet extends Entity {
     private int damage;
     private int speed;
@@ -11,6 +13,20 @@ public abstract class Bullet extends Entity {
         super(sprite);
         this.damage = damage;
         this.speed = speed;
+    }
+
+    private final Timer selfDestructTimer = new Timer(4000, e -> {
+        this.getScene().despawn(this);
+    });
+
+    @Override
+    public void onSpawn() {
+        this.selfDestructTimer.start();
+    }
+
+    @Override
+    public void onTick() {
+        y -= speed;
     }
 
     public int getDamage() {
@@ -27,15 +43,5 @@ public abstract class Bullet extends Entity {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public void onSpawn() {
-        System.out.println(speed);
-    }
-
-    @Override
-    public void onTick() {
-        y -= speed;
     }
 }
