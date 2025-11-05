@@ -59,6 +59,7 @@ public final class Scene {
 
     public void despawn(Entity entity) {
         this.entities.remove(entity);
+        this.window.getWindowPanel().removeDrawable(entity);
     }
 
     public void tick() {
