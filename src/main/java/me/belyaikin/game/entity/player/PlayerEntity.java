@@ -18,6 +18,7 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
     private int xInput = 0;
     private int yInput = 0;
+
     private int speed = 5;
 
     public PlayerEntity(String name) {
@@ -46,6 +47,18 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
         return new AttackResult("TODO: Handle attacks");
     }
 
+    final Timer shootingTimer = new Timer(1000 / 5, e -> {
+        this.getScene().spawn(new SimpleBullet(), this.x + 22, this.y + 10);
+    });
+
+    public void startShooting() {
+        shootingTimer.start();
+    }
+
+    public void stopShooting() {
+        shootingTimer.stop();
+    }
+
     @Override
     public void die() {
         // TODO: Show game over screen
@@ -63,16 +76,12 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
         this.currentWeapon = currentWeapon;
     }
 
-    final Timer shootingTimer = new Timer(1000 / 5, e -> {
-        this.getScene().spawn(new SimpleBullet(), this.x + 22, this.y + 10);
-    });
-
-    public void startShooting() {
-       shootingTimer.start();
+    public int getSpeed() {
+        return speed;
     }
 
-    public void stopShooting() {
-        shootingTimer.stop();
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     @Override
