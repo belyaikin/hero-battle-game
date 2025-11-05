@@ -1,7 +1,6 @@
 package me.belyaikin.game.scene;
 
 import me.belyaikin.game.entity.Entity;
-import me.belyaikin.game.entity.Tickable;
 import me.belyaikin.game.scene.window.Window;
 
 import javax.swing.*;
@@ -42,6 +41,9 @@ public final class Scene {
     public void spawn(Entity entity) {
         this.entities.add(entity);
         this.window.getWindowPanel().addDrawable(entity);
+
+        this.entities.getLast().setScene(this);
+        this.entities.getLast().onSpawn();
     }
 
     public void spawn(Entity entity, int x, int y) {
@@ -58,7 +60,7 @@ public final class Scene {
 
     public void tick() {
         if (!entities.isEmpty())
-            this.entities.forEach(Entity::tick);
+            this.entities.forEach(Entity::onTick);
 
         this.window.repaint();
     }

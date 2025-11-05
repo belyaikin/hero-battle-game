@@ -5,7 +5,10 @@ import me.belyaikin.game.ui.sprite.Sprite;
 import me.belyaikin.game.weapon.AttackResult;
 import me.belyaikin.game.weapon.Weapon;
 
-public final class PlayerEntity extends LivingEntity {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public final class PlayerEntity extends LivingEntity implements KeyListener {
     private final String name;
 
     private Weapon currentWeapon;
@@ -39,7 +42,29 @@ public final class PlayerEntity extends LivingEntity {
     }
 
     @Override
-    public void tick() {
-        System.out.println("Im player");
+    public void onSpawn() {
+        this.getScene().getWindow().addKeyListener(this);
+    }
+
+    @Override
+    public void onTick() {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
+            y += 1;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
