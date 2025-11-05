@@ -7,12 +7,7 @@ import me.belyaikin.game.ui.sprite.Sprite;
 
 public final class GiantCubeEntity extends BossEntity {
     public GiantCubeEntity() {
-        super(1000, new Sprite("test_boss.png", 100, 100));
-    }
-
-    @Override
-    public AttackResult onAttacked(Weapon weapon) {
-        return null;
+        super("boss", new Sprite("test_boss.png", 100, 100), 1000);
     }
 
     @Override

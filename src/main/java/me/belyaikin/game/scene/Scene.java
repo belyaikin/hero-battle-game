@@ -38,6 +38,10 @@ public final class Scene {
         return this.entities;
     }
 
+    public List<Entity> getEntitiesByName(String name) {
+        return this.entities.stream().filter(entity -> entity.getName() == name).toList();
+    }
+
     public void spawn(Entity entity) {
         this.entities.add(entity);
         this.window.getWindowPanel().addDrawable(entity);
@@ -58,8 +62,8 @@ public final class Scene {
     }
 
     public void despawn(Entity entity) {
-        this.entities.remove(entity);
         this.window.getWindowPanel().removeDrawable(entity);
+        this.entities.remove(entity);
     }
 
     public void tick() {

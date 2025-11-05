@@ -10,8 +10,8 @@ public final class Sprite {
     private BufferedImage image;
 
     private int xScale;
-    private int yScale;
 
+    private int yScale;
     public Sprite(String filename, int xScale, int yScale) {
         setImage(filename);
         setScaling(xScale, yScale);
@@ -39,5 +39,21 @@ public final class Sprite {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int getXScale() {
+        return xScale;
+    }
+
+    public void setXScale(int xScale) {
+        this.xScale = xScale;
+    }
+
+    public int getYScale() {
+        return yScale;
+    }
+
+    public void setYScale(int yScale) {
+        this.yScale = yScale;
     }
 }

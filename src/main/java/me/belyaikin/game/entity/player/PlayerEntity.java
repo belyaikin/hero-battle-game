@@ -8,6 +8,7 @@ import me.belyaikin.game.entity.weapon.bullet.impl.SimpleBullet;
 import me.belyaikin.game.ui.sprite.Sprite;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -27,7 +28,7 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
     private int speed = 5;
 
     public PlayerEntity(String name) {
-        super(100, new Sprite("rocket.png", 16*3, 16*3));
+        super("player", new Sprite("rocket.png", 16*3, 16*3), 100);
 
         this.name = name;
     }
@@ -35,6 +36,7 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
     @Override
     public void onSpawn() {
         this.getScene().getWindow().addKeyListener(this);
+
         startShooting();
     }
 
@@ -46,11 +48,6 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
         setX(getX() + xInput * speed);
         setY(getY() + yInput * speed);
-    }
-
-    @Override
-    public AttackResult onAttacked(Weapon weapon) {
-        return new AttackResult("TODO: Handle attacks");
     }
 
     final Timer shootingTimer = new Timer(1000 / 5, e -> {

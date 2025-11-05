@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class SimpleBullet extends Bullet {
     public SimpleBullet() {
-        super(new Sprite("bullet.png", 3, 6), 1, 20);
+        super(new Sprite("bullet.png", 3, 6), 5, 20);
     }
 
     @Override
