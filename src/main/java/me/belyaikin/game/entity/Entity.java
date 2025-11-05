@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class Entity implements TickListener, Drawable {
-    protected int x = 0;
-    protected int y = 0;
+    private int x = 0;
+    private int y = 0;
 
-    protected Sprite sprite;
+    private Sprite sprite;
     private Scene scene;
 
     public Entity(Sprite sprite) {

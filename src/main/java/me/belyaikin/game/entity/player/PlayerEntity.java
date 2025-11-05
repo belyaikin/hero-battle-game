@@ -16,6 +16,11 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
     private Weapon currentWeapon = new SimpleWeapon();
 
+    private final int upKey = KeyEvent.VK_W;
+    private final int downKey = KeyEvent.VK_S;
+    private final int leftKey = KeyEvent.VK_A;
+    private final int rightKey = KeyEvent.VK_D;
+
     private int xInput = 0;
     private int yInput = 0;
 
@@ -35,11 +40,12 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
     @Override
     public void onTick() {
-        x = Math.clamp(x, 10, 725);
-        y = Math.clamp(y, 15, 495);
+        // 10 725
+        setX(Math.clamp(getX(), 10, 725));
+        setY(Math.clamp(getY(), 15, 495));
 
-        x += xInput * speed;
-        y += yInput * speed;
+        setX(getX() + xInput * speed);
+        setY(getY() + yInput * speed);
     }
 
     @Override
@@ -48,7 +54,7 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
     }
 
     final Timer shootingTimer = new Timer(1000 / 5, e -> {
-        this.getScene().spawn(new SimpleBullet(), this.x + 22, this.y + 10);
+        this.getScene().spawn(new SimpleBullet(), getX() + 22, getY() + 10);
     });
 
     public void startShooting() {
@@ -92,16 +98,16 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP -> yInput = -1;
-            case KeyEvent.VK_DOWN -> yInput = 1;
-            case KeyEvent.VK_RIGHT -> xInput = 1;
-            case KeyEvent.VK_LEFT -> xInput = -1;
+            case upKey -> yInput = -1;
+            case downKey -> yInput = 1;
+            case rightKey -> xInput = 1;
+            case leftKey -> xInput = -1;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN) yInput = 0;
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT) xInput = 0;
+        if (e.getKeyCode() == upKey || e.getKeyCode() == downKey) yInput = 0;
+        if (e.getKeyCode() == rightKey || e.getKeyCode() == leftKey) xInput = 0;
     }
 }

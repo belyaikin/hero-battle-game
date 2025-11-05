@@ -5,7 +5,7 @@ import me.belyaikin.game.entity.weapon.AttackResult;
 import me.belyaikin.game.entity.weapon.Weapon;
 import me.belyaikin.game.ui.sprite.Sprite;
 
-public class GiantCubeEntity extends BossEntity {
+public final class GiantCubeEntity extends BossEntity {
     public GiantCubeEntity() {
         super(1000, new Sprite("test_boss.png", 100, 100));
     }

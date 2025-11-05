@@ -26,7 +26,7 @@ public abstract class Bullet extends Entity {
 
     @Override
     public void onTick() {
-        y -= speed;
+        setY(getY() - speed);
     }
 
     public int getDamage() {
