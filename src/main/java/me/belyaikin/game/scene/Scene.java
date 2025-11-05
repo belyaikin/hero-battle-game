@@ -52,6 +52,9 @@ public final class Scene {
 
         this.entities.add(entity);
         this.window.getWindowPanel().addDrawable(entity);
+
+        this.entities.getLast().setScene(this);
+        this.entities.getLast().onSpawn();
     }
 
     public void despawn(Entity entity) {

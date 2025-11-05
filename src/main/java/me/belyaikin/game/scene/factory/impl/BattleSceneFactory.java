@@ -14,7 +14,7 @@ public final class BattleSceneFactory implements SceneFactory {
         Scene scene = new Scene(window);
 
         // TEMP
-        scene.spawn(new PlayerEntity("Test"));
+        scene.spawn(new PlayerEntity("Test"), 370, 495);
 
         return scene;
     }

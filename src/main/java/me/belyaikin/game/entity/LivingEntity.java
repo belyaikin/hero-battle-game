@@ -1,8 +1,8 @@
 package me.belyaikin.game.entity;
 
 import me.belyaikin.game.ui.sprite.Sprite;
-import me.belyaikin.game.weapon.AttackResult;
-import me.belyaikin.game.weapon.Weapon;
+import me.belyaikin.game.entity.weapon.AttackResult;
+import me.belyaikin.game.entity.weapon.Weapon;
 
 public abstract class LivingEntity extends Entity {
     private int health;

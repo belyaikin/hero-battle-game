@@ -1,9 +1,10 @@
 package me.belyaikin.game.entity.player;
 
 import me.belyaikin.game.entity.LivingEntity;
+import me.belyaikin.game.entity.weapon.SimpleWeapon;
 import me.belyaikin.game.ui.sprite.Sprite;
-import me.belyaikin.game.weapon.AttackResult;
-import me.belyaikin.game.weapon.Weapon;
+import me.belyaikin.game.entity.weapon.AttackResult;
+import me.belyaikin.game.entity.weapon.Weapon;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,10 +12,14 @@ import java.awt.event.KeyListener;
 public final class PlayerEntity extends LivingEntity implements KeyListener {
     private final String name;
 
-    private Weapon currentWeapon;
+    private Weapon currentWeapon = new SimpleWeapon();
+
+    private int xInput = 0;
+    private int yInput = 0;
+    private int speed = 5;
 
     public PlayerEntity(String name) {
-        super(100, new Sprite("test.png", 100, 100));
+        super(100, new Sprite("rocket.png", 16*3, 16*3));
 
         this.name = name;
     }
@@ -41,6 +46,10 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
         this.currentWeapon = currentWeapon;
     }
 
+    public void shoot() {
+        this.getScene().spawn(this.currentWeapon.getBullet(), this.x, this.y + 10);
+    }
+
     @Override
     public void onSpawn() {
         this.getScene().getWindow().addKeyListener(this);
@@ -48,7 +57,11 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
     @Override
     public void onTick() {
+        x = Math.clamp(x, 10, 725);
+        y = Math.clamp(y, 15, 495);
 
+        x += xInput * speed;
+        y += yInput * speed;
     }
 
     @Override
@@ -58,13 +71,18 @@ public final class PlayerEntity extends LivingEntity implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            y += 1;
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP -> yInput = -1;
+            case KeyEvent.VK_DOWN -> yInput = 1;
+            case KeyEvent.VK_RIGHT -> xInput = 1;
+            case KeyEvent.VK_LEFT -> xInput = -1;
+            case KeyEvent.VK_SPACE -> shoot();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN) yInput = 0;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT) xInput = 0;
     }
 }
